@@ -8,46 +8,79 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --accent: #FF3D00;
+            --bg: #050505;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0F0F0F;
+            background-color: var(--bg);
             color: #FFFFFF;
             margin: 0;
             overflow-x: hidden;
         }
         h1, h2, h3, h4, .font-heading {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Syncopate', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.2em;
+        }
+        .font-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
         }
         section {
-            scroll-margin-top: 100px;
+            scroll-margin-top: 80px;
         }
         .glass {
-            background: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .gradient-text {
-            background: linear-gradient(to right, #FF6A00, #FF3D00);
+            background: linear-gradient(to right, #FF6A00, #FF3D00, #FF0055);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 4s linear infinite;
+        }
+        @keyframes textShine {
+            to { background-position: 200% center; }
         }
         .orange-gradient {
             background: linear-gradient(135deg, #FF6A00 0%, #FF3D00 100%);
         }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255, 61, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 61, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .grain {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9998;
+        }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #0F0F0F;
+            background: #050505;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #FF3D00;
-            border-radius: 10px;
+        }
+        .glow-hover {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(255, 61, 0, 0.4);
+            transform: translateY(-2px);
         }
     </style>
 <script type="importmap">
@@ -66,6 +99,7 @@
 </script>
 </head>
 <body class="custom-scrollbar selection:bg-orange-500 selection:text-white">
+    <div class="grain"></div>
     <div id="root"></div>
 </body>
 </html>
