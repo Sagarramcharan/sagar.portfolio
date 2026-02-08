@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import { ArrowDown, ChevronRight, Binary } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const scrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById('projects');
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 px-4">
             <motion.a
               href="#projects"
-              onClick={scrollToProjects}
+              onClick={(e) => scrollToSection(e, 'projects')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="w-full sm:w-auto group relative overflow-hidden orange-gradient px-8 md:px-12 py-4 md:py-5 rounded-full text-white font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs flex items-center justify-center gap-3 shadow-[0_0_50px_rgba(255,61,0,0.3)] transition-all"
@@ -81,6 +81,7 @@ const Hero: React.FC = () => {
 
             <motion.a
               href="#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
               whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.6)" }}
               whileTap={{ scale: 0.98 }}
               className="w-full sm:w-auto px-8 md:px-12 py-4 md:py-5 rounded-full border border-white/10 text-white font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs backdrop-blur-sm transition-all"
