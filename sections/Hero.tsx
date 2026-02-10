@@ -14,8 +14,8 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#050505]">
-      {/* Dynamic Futuristic Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* Dynamic Futuristic Background - Pointer events none ensures smooth touch scrolling */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505]" />
         
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ y: [0, 15, 0] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4 opacity-40"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4 opacity-40 pointer-events-none"
       >
         <span className="text-[8px] md:text-[9px] uppercase tracking-[0.6em] vertical-rl rotate-180">Scroll</span>
         <div className="w-px h-8 md:h-12 bg-gradient-to-b from-orange-500 to-transparent" />
