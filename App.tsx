@@ -24,7 +24,7 @@ const App: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-[#0F0F0F] flex items-center justify-center z-[9999]">
+      <div className="fixed inset-0 bg-[#050505] flex items-center justify-center z-[9999]">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -39,9 +39,9 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="relative min-h-screen">
+      <div className="relative min-h-screen w-full overflow-x-hidden flex flex-col">
         <Navbar />
-        <main>
+        <main className="flex-1 w-full max-w-full overflow-x-hidden">
           <Hero />
           <About />
           <Skills />

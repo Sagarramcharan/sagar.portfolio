@@ -3,7 +3,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
     <title>SAGAR | Creative Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,46 +15,53 @@
             --bg: #050505;
         }
         
-        /* Fix scrolling and overflow issues */
+        /* Absolute protection against horizontal overflow and clunky scrolling */
         html, body {
             width: 100%;
-            height: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            -webkit-overflow-scrolling: touch; /* Momentum scroll for iOS */
+            overflow-x: hidden !important;
+            -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
             background-color: var(--bg);
+            position: relative;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             color: #FFFFFF;
-            position: relative;
-            min-height: 100dvh; /* Dynamic viewport height */
-            touch-action: manipulation; /* Optimizes touch interactions */
+            min-height: 100dvh;
+            touch-action: pan-y; /* Allows only vertical panning for smoother feel */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         h1, h2, h3, h4, .font-heading {
             font-family: 'Syncopate', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.1em; /* Reduced default tracking to prevent mobile overflow */
         }
+        
         .font-grotesk {
             font-family: 'Space Grotesk', sans-serif;
         }
+
         section {
             scroll-margin-top: 80px;
             width: 100%;
             max-width: 100vw;
             overflow-x: hidden;
+            position: relative;
         }
+
+        /* Glass and Gradients */
         .glass {
-            background: rgba(10, 10, 10, 0.6);
+            background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         .gradient-text {
             background: linear-gradient(to right, #FF6A00, #FF3D00, #FF0055);
             -webkit-background-clip: text;
@@ -62,18 +69,22 @@
             background-size: 200% auto;
             animation: textShine 4s linear infinite;
         }
+
         @keyframes textShine {
             to { background-position: 200% center; }
         }
+
         .orange-gradient {
             background: linear-gradient(135deg, #FF6A00 0%, #FF3D00 100%);
         }
+
         .grid-bg {
             background-image: 
                 linear-gradient(rgba(255, 61, 0, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 61, 0, 0.05) 1px, transparent 1px);
             background-size: 40px 40px;
         }
+
         .grain {
             position: fixed;
             top: 0; left: 0;
@@ -83,6 +94,7 @@
             pointer-events: none;
             z-index: 9998;
         }
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 4px;
         }
@@ -92,12 +104,17 @@
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #FF3D00;
         }
-        .glow-hover {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+        /* Utility for long headings on mobile */
+        .mobile-text-fix {
+            word-break: break-all;
+            hyphens: auto;
         }
-        .glow-hover:hover {
-            box-shadow: 0 0 30px rgba(255, 61, 0, 0.4);
-            transform: translateY(-2px);
+
+        /* Fix for overlap issues shown in screenshot */
+        main {
+            position: relative;
+            z-index: 1;
         }
     </style>
 <script type="importmap">
