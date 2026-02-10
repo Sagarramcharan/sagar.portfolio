@@ -1,22 +1,21 @@
 
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Hero from './sections/Hero';
-import About from './sections/About';
-import Skills from './sections/Skills';
-import Projects from './sections/Projects';
-import Experience from './sections/Experience';
-import Contact from './sections/Contact';
-import Footer from './components/Footer';
-import AIChat from './components/AIChat';
-import { AnimatePresence, motion } from 'framer-motion';
+import { HashRouter as Router } from 'react-router-dom';
+import Navbar from './components/Navbar.tsx';
+import Hero from './sections/Hero.tsx';
+import About from './sections/About.tsx';
+import Skills from './sections/Skills.tsx';
+import Projects from './sections/Projects.tsx';
+import Experience from './sections/Experience.tsx';
+import Contact from './sections/Contact.tsx';
+import Footer from './components/Footer.tsx';
+import AIChat from './components/AIChat.tsx';
+import { motion } from 'framer-motion';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate initial asset loading
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
-import { Project } from '../types';
+import { Project } from '../types.ts';
 
 const projects: Project[] = [
   {

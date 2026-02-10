@@ -12,9 +12,16 @@ Keep responses concise and engaging.
 
 export const getGeminiResponse = async (userMessage: string) => {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+    // The API key is obtained exclusively from the process.env.API_KEY environment variable.
+    const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : "";
+    
+    if (!apiKey) {
+      return "I'm currently offline as my neural key hasn't been configured. Please check the environment settings.";
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp', // Fast and reliable for chat
+      model: 'gemini-3-flash-preview',
       contents: userMessage,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,

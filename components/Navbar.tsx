@@ -39,7 +39,6 @@ const Navbar: React.FC = () => {
   };
 
   const handleHireMe = () => {
-    // This will open your resume PDF in a new tab
     const pdfUrl = 'Sagar_Resume.pdf';
     window.open(pdfUrl, '_blank', 'noopener,noreferrer');
   };
@@ -62,7 +61,6 @@ const Navbar: React.FC = () => {
           <span className="text-orange-500">.</span>
         </motion.a>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-12">
           {navItems.map((item) => (
             <a
@@ -83,7 +81,6 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Toggle */}
         <button
           className="md:hidden text-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -92,7 +89,6 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

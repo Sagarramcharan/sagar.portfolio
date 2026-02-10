@@ -2,10 +2,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Monitor, Users } from 'lucide-react';
-import { Skill } from '../types';
+import { Skill } from '../types.ts';
 
 const skills: Skill[] = [
-  { name: 'Python', icon: 'Code', level: 95, category: 'Frontend' }, // Using existing category mapping
+  { name: 'Python', icon: 'Code', level: 95, category: 'Frontend' },
   { name: 'AI-ML', icon: 'Code', level: 90, category: 'Frontend' },
   { name: 'MySQL', icon: 'Server', level: 85, category: 'Backend' },
   { name: 'Firebase', icon: 'Server', level: 80, category: 'Backend' },

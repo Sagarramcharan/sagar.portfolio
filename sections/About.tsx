@@ -31,8 +31,8 @@ const About: React.FC = () => {
             </div>
             {/* Academic Stat Overlay */}
             <div className="absolute -bottom-6 -right-6 glass p-8 rounded-3xl border border-orange-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-              <div className="text-5xl font-black gradient-text">7.0</div>
-              <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mt-2">B.Tech CGPA</div>
+              <div className="text-5xl font-black gradient-text">2026</div>
+              <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400 mt-2">GRADUATION</div>
             </div>
           </motion.div>
 
@@ -66,7 +66,7 @@ const About: React.FC = () => {
                   <div className="w-px h-12 bg-orange-500/30 mt-2" />
                   <div className="text-sm text-gray-400 space-y-1">
                     <div className="text-white font-bold">GIET University</div>
-                    <div>2025 - Present | AIML</div>
+                    <div>2022 - 2026 | AIML</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExperienceItem } from '../types';
+import { ExperienceItem } from '../types.ts';
 
 const experiences: ExperienceItem[] = [
   {
@@ -45,11 +45,9 @@ const Experience: React.FC = () => {
               viewport={{ once: true }}
               className="relative pl-10 md:pl-16 border-l border-orange-500/30 group"
             >
-              {/* Timeline Dot */}
               <div className="absolute -left-[5px] top-0 w-[10px] h-[10px] rounded-full bg-orange-500 shadow-[0_0_15px_rgba(255,61,0,0.8)] group-hover:scale-150 transition-transform duration-500" />
               
               <div className="flex flex-col gap-10">
-                {/* Header Information - Stacked to prevent overlap */}
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <h3 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tight leading-tight">
@@ -66,7 +64,6 @@ const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Description */}
                 <div className="max-w-3xl">
                   <ul className="space-y-6">
                     {exp.description.map((item, i) => (

@@ -2,12 +2,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
-import { getGeminiResponse } from '../geminiService';
-import { ChatMessage } from '../types';
+import { getGeminiResponse } from '../geminiService.ts';
 
 const AIChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
+  const [messages, setMessages] = useState<{role: 'user' | 'assistant', content: string}[]>([
     { role: 'assistant', content: "Hello, I am Sagar's digital twin. Ask me anything about my creator's skills, projects, or background." }
   ]);
   const [input, setInput] = useState('');
@@ -44,7 +43,6 @@ const AIChat: React.FC = () => {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="mb-4 w-[calc(100vw-2rem)] md:w-[400px] h-[500px] glass rounded-[2rem] border border-orange-500/20 shadow-2xl flex flex-col overflow-hidden fixed bottom-24 right-4 md:right-6 md:relative md:bottom-auto"
           >
-            {/* Header */}
             <div className="p-5 md:p-6 border-b border-white/5 flex justify-between items-center bg-orange-500/5">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-orange-500 rounded-lg">
@@ -60,7 +58,6 @@ const AIChat: React.FC = () => {
               </button>
             </div>
 
-            {/* Messages */}
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 md:p-6 space-y-4 custom-scrollbar">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -84,7 +81,6 @@ const AIChat: React.FC = () => {
               )}
             </div>
 
-            {/* Input */}
             <div className="p-4 bg-white/5 border-t border-white/5">
               <div className="relative">
                 <input
