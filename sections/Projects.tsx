@@ -62,22 +62,24 @@ const Projects: React.FC = () => {
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.6, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="group relative"
               >
                 <div className="relative aspect-[16/11] overflow-hidden rounded-3xl mb-8 border border-white/5">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-1000 scale-105 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-1000 scale-105 md:group-hover:scale-110"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[#050505]/40 group-hover:bg-transparent transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-[#050505]/40 md:group-hover:bg-transparent transition-colors duration-500" />
                   
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#FF3D00]/10 backdrop-blur-[2px]">
-                    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-black shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500">
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 bg-[#FF3D00]/10 md:backdrop-blur-[2px]">
+                    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-black shadow-2xl scale-75 md:group-hover:scale-100 transition-transform duration-500">
                       <ArrowUpRight size={32} />
                     </div>
                   </div>

@@ -83,9 +83,10 @@ const Contact: React.FC = () => {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5 }}
             className="glass p-10 rounded-[2.5rem] border border-white/5 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 blur-3xl rounded-full" />

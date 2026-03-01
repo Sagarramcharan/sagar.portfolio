@@ -16,26 +16,26 @@ const Hero: React.FC = () => {
     <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#050505]">
       {/* Dynamic Futuristic Background - Pointer events none ensures smooth touch scrolling */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 grid-bg opacity-20" />
+        <div className="absolute inset-0 grid-bg opacity-[0.07] md:opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505]" />
         
-        {/* Animated HUD Elements */}
+        {/* Animated HUD Elements - Only on larger screens for performance */}
         <motion.div 
           animate={{ rotate: 360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] border border-orange-500/10 rounded-full flex items-center justify-center opacity-30 md:opacity-100"
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-1/4 -right-1/4 w-[400px] h-[400px] md:w-[800px] md:h-[800px] border border-orange-500/10 rounded-full hidden md:flex items-center justify-center opacity-30 md:opacity-100"
         >
-          <div className="w-[600px] h-[600px] border border-orange-500/5 rounded-full" />
+          <div className="w-[300px] h-[300px] md:w-[600px] md:h-[600px] border border-orange-500/5 rounded-full" />
         </motion.div>
 
-        {/* Ambient Glows */}
+        {/* Ambient Glows - Simplified for mobile */}
         <motion.div
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
+            scale: [1, 1.1, 1],
+            opacity: [0.05, 0.1, 0.05],
           }}
-          transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#FF3D00]/5 rounded-full blur-[200px]"
+          transition={{ duration: 15, repeat: Infinity }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[1000px] md:h-[1000px] bg-[#FF3D00]/5 rounded-full blur-[100px] md:blur-[200px]"
         />
       </div>
 

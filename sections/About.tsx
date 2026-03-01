@@ -15,17 +15,18 @@ const About: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
             className="relative"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] group border border-white/5">
               <img
                 src="https://image2url.com/r2/default/images/1770457853826-2c606a04-a61f-4d23-aa15-8dc693776812.jpeg"
                 alt="Sagar Portrait"
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-1000 md:group-hover:scale-105"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-transparent to-transparent opacity-80" />
             </div>
@@ -37,10 +38,10 @@ const About: React.FC = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <div className="flex items-center gap-3 mb-6">
               <GraduationCap className="text-orange-500" size={20} />

@@ -56,10 +56,16 @@
 
         /* Glass and Gradients */
         .glass {
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (min-width: 768px) {
+            .glass {
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                background: rgba(10, 10, 10, 0.7);
+            }
         }
 
         .gradient-text {
@@ -68,6 +74,7 @@
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             animation: textShine 4s linear infinite;
+            will-change: background-position;
         }
 
         @keyframes textShine {
@@ -93,6 +100,13 @@
             opacity: 0.03;
             pointer-events: none;
             z-index: 9998;
+            display: none; /* Disabled by default for performance */
+        }
+
+        @media (min-width: 1024px) {
+            .grain {
+                display: block;
+            }
         }
 
         .custom-scrollbar::-webkit-scrollbar {
@@ -131,10 +145,12 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="custom-scrollbar selection:bg-orange-500 selection:text-white">
     <div class="grain"></div>
     <div id="root"></div>
     <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>

@@ -35,8 +35,8 @@ const Skills: React.FC = () => {
               key={group.cat}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05, duration: 0.5 }}
+              viewport={{ once: true, margin: "-50px" }}
               className="glass p-8 rounded-3xl border border-white/5 group hover:border-orange-500/20 transition-colors"
             >
               <div className="flex items-center gap-4 mb-10">

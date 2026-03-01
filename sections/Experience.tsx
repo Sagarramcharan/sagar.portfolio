@@ -40,10 +40,10 @@ const Experience: React.FC = () => {
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.05 }}
+              viewport={{ once: true, margin: "-50px" }}
               className="relative pl-8 md:pl-16 border-l border-orange-500/30 group"
             >
               {/* Timeline dot */}
