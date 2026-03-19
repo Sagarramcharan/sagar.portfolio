@@ -1,15 +1,17 @@
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, MapPin, Mail, Phone, Loader2 } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
+    setIsSuccess(false);
 
     try {
       // Using FormSubmit.co AJAX endpoint for direct email delivery
@@ -23,13 +25,17 @@ const Contact: React.FC = () => {
           name: formState.name,
           email: formState.email,
           message: formState.message,
-          _subject: `New Portfolio Message from ${formState.name}`
+          _subject: `New Portfolio Message from ${formState.name}`,
+          _template: 'table',
+          _captcha: 'false'
         })
       });
 
       if (response.ok) {
-        alert('Communication received. The digital twin has notified Sagar.');
+        setIsSuccess(true);
         setFormState({ name: '', email: '', message: '' });
+        // Reset success message after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000);
       } else {
         throw new Error('Failed to send');
       }
@@ -91,63 +97,90 @@ const Contact: React.FC = () => {
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 blur-3xl rounded-full" />
             
-            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-              <div>
-                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Full Name</label>
-                <input
-                  type="text"
-                  required
-                  name="name"
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all placeholder:text-gray-700"
-                  placeholder="Your Name"
-                />
-              </div>
-              <div>
-                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Email Address</label>
-                <input
-                  type="email"
-                  required
-                  name="email"
-                  value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all placeholder:text-gray-700"
-                  placeholder="you@company.com"
-                />
-              </div>
-              <div>
-                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Message</label>
-                <textarea
-                  rows={4}
-                  required
-                  name="message"
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all placeholder:text-gray-700 resize-none"
-                  placeholder="Tell me about your vision..."
-                />
-              </div>
-              <motion.button
-                disabled={isSending}
-                whileHover={{ scale: isSending ? 1 : 1.02 }}
-                whileTap={{ scale: isSending ? 1 : 0.98 }}
-                type="submit"
-                className={`w-full orange-gradient py-5 rounded-2xl font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-3 shadow-xl hover:shadow-orange-500/20 transition-all ${isSending ? 'opacity-70 cursor-not-allowed' : ''}`}
-              >
-                {isSending ? (
-                  <>
-                    Synchronizing...
-                    <Loader2 size={18} className="animate-spin" />
-                  </>
-                ) : (
-                  <>
-                    Launch Message
-                    <Send size={18} />
-                  </>
-                )}
-              </motion.button>
-            </form>
+            <AnimatePresence mode="wait">
+              {isSuccess ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="h-full flex flex-col items-center justify-center text-center py-10"
+                >
+                  <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(255,61,0,0.4)]">
+                    <Send className="text-white" size={32} />
+                  </div>
+                  <h3 className="text-2xl font-black uppercase mb-4">Message Launched!</h3>
+                  <p className="text-gray-400 font-grotesk">
+                    The digital twin has notified Sagar. <br />
+                    Expect a synchronization soon.
+                  </p>
+                  <button 
+                    onClick={() => setIsSuccess(false)}
+                    className="mt-8 text-[10px] font-black uppercase tracking-widest text-orange-500 hover:text-white transition-colors"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                  <div>
+                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      name="name"
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all placeholder:text-gray-700"
+                      placeholder="Your Name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Email Address</label>
+                    <input
+                      type="email"
+                      required
+                      name="email"
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all placeholder:text-gray-700"
+                      placeholder="you@company.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Message</label>
+                    <textarea
+                      rows={4}
+                      required
+                      name="message"
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 outline-none transition-all placeholder:text-gray-700 resize-none"
+                      placeholder="Tell me about your vision..."
+                    />
+                  </div>
+                  <motion.button
+                    disabled={isSending}
+                    whileHover={{ scale: isSending ? 1 : 1.02 }}
+                    whileTap={{ scale: isSending ? 1 : 0.98 }}
+                    type="submit"
+                    className={`w-full orange-gradient py-5 rounded-2xl font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-3 shadow-xl hover:shadow-orange-500/20 transition-all ${isSending ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  >
+                    {isSending ? (
+                      <>
+                        Synchronizing...
+                        <Loader2 size={18} className="animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        Launch Message
+                        <Send size={18} />
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
