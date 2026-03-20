@@ -11,7 +11,9 @@ const projects: Project[] = [
     description: 'Developed a system using Python and ML algorithms for personalized health recommendations. Designed an intuitive web interface for users to access tailored diet and exercise plans.',
     image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=1000',
     tags: ['Python', 'ML Algorithms', 'Health-Tech'],
-    category: 'ai'
+    category: 'ai',
+    liveUrl: 'https://fitness-coach-nine-peach.vercel.app/',
+    githubUrl: 'https://github.com/Sagarsatapathy24/ai-health-coach' // Replace with your actual GitHub URL
   },
   {
     id: '2',
@@ -19,7 +21,9 @@ const projects: Project[] = [
     description: 'Engineered a comprehensive system to manage and track product stock and expiry dates. Integrated backend data with the frontend for seamless real-time inventory updates.',
     image: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=1000',
     tags: ['Backend', 'Real-time', 'Inventory'],
-    category: 'web'
+    category: 'web',
+    liveUrl: 'https://store-mate-sagar.vercel.app/', // Replace with your actual Vercel URL
+    githubUrl: 'https://github.com/Sagarsatapathy24/store-mate' // Replace with your actual GitHub URL
   }
 ];
 
@@ -78,11 +82,16 @@ const Projects: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-[#050505]/40 md:group-hover:bg-transparent transition-colors duration-500" />
                   
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 bg-[#FF3D00]/10 md:backdrop-blur-[2px]">
+                  <a 
+                    href={project.liveUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 bg-[#FF3D00]/10 md:backdrop-blur-[2px]"
+                  >
                     <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center text-black shadow-2xl scale-75 md:group-hover:scale-100 transition-transform duration-500">
                       <ArrowUpRight size={32} />
                     </div>
-                  </div>
+                  </a>
 
                   <div className="absolute top-8 left-8 px-6 py-2 glass rounded-full text-[9px] font-black uppercase tracking-widest text-white border border-white/20">
                     {project.category}
@@ -101,10 +110,20 @@ const Projects: React.FC = () => {
                   <p className="text-gray-400 font-grotesk text-base leading-relaxed mb-10 opacity-70 group-hover:opacity-100 transition-opacity">{project.description}</p>
                   
                   <div className="flex items-center gap-10">
-                    <a href="#" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] hover:text-orange-500 transition-colors group/link">
+                    <a 
+                      href={project.liveUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] hover:text-orange-500 transition-colors group/link"
+                    >
                       Access Console <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
                     </a>
-                    <a href="#" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] hover:text-orange-500 transition-colors group/link">
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] hover:text-orange-500 transition-colors group/link"
+                    >
                       Repository <Github size={14} className="group-hover/link:translate-x-1 transition-transform" />
                     </a>
                   </div>
