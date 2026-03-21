@@ -13,7 +13,7 @@ const projects: Project[] = [
     tags: ['Python', 'ML Algorithms', 'Health-Tech'],
     category: 'ai',
     liveUrl: 'https://fitness-coach-nine-peach.vercel.app/',
-    githubUrl: 'https://github.com/Sagarsatapathy24/ai-health-coach' // Replace with your actual GitHub URL
+    githubUrl: 'https://github.com/Sagarramcharan/FITNESS-COACH'
   },
   {
     id: '2',

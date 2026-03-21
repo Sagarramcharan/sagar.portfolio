@@ -23,7 +23,7 @@ PROFESSIONAL JOURNEY:
 - Python Intern at Embrizon Technologies (May - June. 2024): Developed data automation scripts, built ML models with Pandas/Scikit-learn, and managed repositories on GitHub.
 
 SELECTED PROJECTS:
-- AI Based Health and Fitness Coach: A system using Python and ML for personalized health recommendations and diet/exercise plans. Accessible via the "Access Console" link in the Projects section.
+- AI Based Health and Fitness Coach: A system using Python and ML for personalized health recommendations and diet/exercise plans. Accessible via the "Access Console" link in the Projects section. Repository: https://github.com/Sagarramcharan/FITNESS-COACH
 - Store Mate: A real-time inventory management system to track product stock and expiry dates. Accessible via the "Access Console" link in the Projects section.
 
 GUIDELINES FOR RESPONSES:
