@@ -57,7 +57,7 @@ const About: React.FC = () => {
             </p>
             
             <p className="text-lg text-gray-300 leading-relaxed mb-12">
-              With hands-on experience in predictive modeling at SINX IT solutions and data automation at Embrizon Technologies, I bridge the gap between complex backend logic and user-centric systems.
+              Aspiring AI Product manager | AI & ML Enthusiast | Building AI-Powered Products
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-14">
